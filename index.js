@@ -4,11 +4,13 @@ const morgan = require("morgan");
 const app = express();
 
 app.use(morgan('[:method] :url (:status) - :res[content-length] B - :response-time ms'));
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 function echo(payload, res) {
     res.send(payload);
-    res.on('finish', () => console.log(payload));
+    res.on('finish', () => {
+        console.log(payload);
+    });
 }
 
 app.route('/')
