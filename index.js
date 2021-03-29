@@ -9,7 +9,7 @@ app.use(express.json({limit: '50mb'}));
 function echo(payload, res) {
     res.send(payload);
     res.on('finish', () => {
-        console.log(payload);
+        console.dir(payload, {depth: null});
     });
 }
 
