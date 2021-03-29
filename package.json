@@ -1,7 +1,7 @@
 {
   "name": "echoserver",
   "version": "1.0.0",
-  "description": "Simple application that echoes requests",
+  "description": "A simple server that echoes requests",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
