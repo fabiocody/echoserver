@@ -18,6 +18,6 @@ app.post('/', (req, res) => {
     res.on('finish', () => console.log(echo));
 });
 
-const hostname = '0.0.0.0';
+const hostname = process.env.HOSTNAME || '0.0.0.0';
 const port = parseInt(process.env.PORT ||  '3000', 10);
 app.listen(port, hostname, () => console.log(`Listening on http://${hostname}:${port}`))
