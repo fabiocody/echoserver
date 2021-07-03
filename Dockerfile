@@ -1,10 +1,9 @@
 FROM node:14-alpine
 
-ADD index.js index.js
 ADD package.json package.json
-ADD package-lock.json package-lock.json
-
 RUN npm ci
+
+ADD index.js index.js
 
 EXPOSE 3000
 
