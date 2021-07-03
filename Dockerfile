@@ -1,6 +1,7 @@
 FROM node:14-alpine
 
 ADD package.json package.json
+ADD package-lock.json package-lock.json
 RUN npm ci
 
 ADD index.js index.js
