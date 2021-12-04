@@ -7,12 +7,19 @@ import (
 )
 
 func main() {
-	setupLogger()
+	log.SetFormatter(&log.TextFormatter{
+		ForceColors:   true,
+		FullTimestamp: true,
+	})
+	log.SetReportCaller(true)
 	r := gin.Default()
 	r.GET("/", echoGet)
 	r.POST("/", echoPost)
+	log.Info("Running")
 	err := r.Run()
-	handleErr(err)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func echoGet(c *gin.Context) {
@@ -29,19 +36,4 @@ func echoPost(c *gin.Context) {
 	payload := gin.H{"headers": headers, "body": body}
 	log.Println(payload)
 	c.IndentedJSON(http.StatusOK, payload)
-}
-
-func setupLogger() {
-	log.SetFormatter(&log.TextFormatter{
-		ForceColors:   true,
-		FullTimestamp: true,
-	})
-	log.SetReportCaller(true)
-	log.Info("Running")
-}
-
-func handleErr(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
 }
