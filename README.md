@@ -14,5 +14,5 @@ The same object that gets logged is also sent as a response.
 ## Docker
 
 ```bash
-docker run --rm -p 3000:3000 ghcr.io/fabiocody/echoserver
+docker run --rm -p 8080:8080 ghcr.io/fabiocody/echoserver
 ```
