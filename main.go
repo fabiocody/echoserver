@@ -14,7 +14,7 @@ func main() {
 	})
 	log.SetReportCaller(true)
 	r := gin.Default()
-	r.Use(cors.New(cors.Config{AllowOrigins: []string{"*"}}))
+	r.Use(cors.Default())
 	r.GET("/", echoGet)
 	r.POST("/", echoPost)
 	log.Info("Running")
